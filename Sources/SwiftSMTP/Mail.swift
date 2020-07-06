@@ -22,33 +22,33 @@ public struct Mail {
     public let uuid = UUID().uuidString
 
     /// The `User` that the `Mail` will be sent from.
-    public let from: User
+    public var from: User
 
     /// Array of `User`s to send the `Mail` to.
-    public let to: [User]
+    public var to: [User]
 
     /// Array of `User`s to cc. Defaults to none.
-    public let cc: [User]
+    public var cc: [User]
 
     /// Array of `User`s to bcc. Defaults to none.
-    public let bcc: [User]
+    public var bcc: [User]
 
     /// Subject of the `Mail`. Defaults to none.
-    public let subject: String
+    public var subject: String
 
     /// Text of the `Mail`. Defaults to none.
-    public let text: String
+    public var text: String
 
     /// Array of `Attachment`s for the `Mail`. If the `Mail` has multiple `Attachment`s that are alternatives to plain
     /// text, the last one will be used as the alternative (all the `Attachments` will still be sent). Defaults to none.
-    public let attachments: [Attachment]
+    public var attachments: [Attachment]
 
     /// Attachment that is an alternative to plain text.
-    public let alternative: Attachment?
+    public var alternative: Attachment?
 
     /// Additional headers for the `Mail`. Header keys are capitalized and duplicate keys will overwrite each other.
     /// Defaults to none. The following will be ignored: CONTENT-TYPE, CONTENT-DISPOSITION, CONTENT-TRANSFER-ENCODING.
-    public let additionalHeaders: [String: String]
+    public var additionalHeaders: [String: String]
 
     /// message-id https://tools.ietf.org/html/rfc5322#section-3.6.4
     public var id: String {
@@ -158,10 +158,10 @@ extension Mail {
     /// Represents a sender or receiver of an email.
     public struct User {
         /// The user's name that is displayed in an email. Optional.
-        public let name: String?
+        public var name: String?
 
         /// The user's email address.
-        public let email: String
+        public var email: String
 
         ///  Initializes a `User`.
         ///

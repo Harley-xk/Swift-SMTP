@@ -19,9 +19,9 @@ import Foundation
 /// Represents a `Mail`'s attachment.
 /// Different SMTP servers have different attachment size limits.
 public struct Attachment {
-    let type: AttachmentType
-    let additionalHeaders: [String: String]
-    let relatedAttachments: [Attachment]
+    public var type: AttachmentType
+    public var additionalHeaders: [String: String]
+    public var relatedAttachments: [Attachment]
 
     /// Initialize a data `Attachment`.
     ///
@@ -118,7 +118,7 @@ public struct Attachment {
     }
 }
 
-extension Attachment {
+public extension Attachment {
     enum AttachmentType {
         case data(data: Data, mime: String, name: String, inline: Bool)
         case file(path: String, mime: String, name: String, inline: Bool)
@@ -199,7 +199,7 @@ extension Attachment: Equatable {
 }
 
 extension Attachment.AttachmentType: Equatable {
-    static func ==(lhs: Attachment.AttachmentType, rhs: Attachment.AttachmentType) -> Bool {
+    public static func ==(lhs: Attachment.AttachmentType, rhs: Attachment.AttachmentType) -> Bool {
         switch (lhs, rhs) {
         case (let .data(data1, mime1, name1, inline1), let .data(data2, mime2, name2, inline2)):
             return data1 == data2 &&
